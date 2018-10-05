@@ -3,14 +3,26 @@ import PropTypes from 'prop-types'
 
 class QuizQuestionButton extends Component {
 
-    handleClick = (event) => {
+    /**
+     * Handles click event
+     *
+     * @returns {void}
+     * @memberof QuizQuestionButton
+     */
+    handleClick() {
         this.props.clickHandler(this.props.button_text)
     }
 
+    /**
+     * Renders QuizQuestionButton
+     *
+     * @returns {JSX}
+     * @memberof QuizQuestionButton
+     */
     render(){
         return (
             <li>
-                <button onClick={this.handleClick}>{this.props.button_text}</button>
+                <button onClick={this.handleClick.bind(this)}>{this.props.button_text}</button>
             </li>
         )
     }

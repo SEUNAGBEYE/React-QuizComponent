@@ -24,7 +24,7 @@ class Quiz extends Component {
      * @returns {void}
      * @memberof Quiz
      */
-    showNextQuestion = () => {
+    showNextQuestion() {
         this.setState((state) => {
             return {
                 quiz_position: state.quiz_position + 1
@@ -46,7 +46,7 @@ class Quiz extends Component {
                     <QuizQuestion 
                         quiz_question={quizData.quiz_questions
                         [this.state.quiz_position - 1]}
-                        showNextQuestionHandler={this.showNextQuestion}
+                        showNextQuestionHandler={this.showNextQuestion.bind(this)}
                     />
                 : <QuizEnd/>
                 }

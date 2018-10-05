@@ -10,7 +10,7 @@ class QuizQuestion extends Component {
      * @returns {void}
      * @memberof QuizQuestion
      */
-    handleClick = (buttonText) => {
+    handleClick(buttonText) {
         if(buttonText === this.props.quiz_question.answer){
             this.props.showNextQuestionHandler()
         }
@@ -33,8 +33,8 @@ class QuizQuestion extends Component {
               {
                     this.props.quiz_question.answer_options.map((answer, index) => <QuizQuestionButton 
                         button_text={answer}
-                        key={`number-${index}`}
-                        clickHandler={this.handleClick}
+                        key={index}
+                        clickHandler={this.handleClick.bind(this)}
                     />)
                 }
               </ul>
