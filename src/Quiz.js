@@ -4,6 +4,12 @@ import QuizEnd from './QuizEnd'
 
 let quizData = require('./quiz_data.json')
 
+/**
+ * Quiz Component
+ *
+ * @class Quiz
+ * @extends {Component}
+ */
 class Quiz extends Component {
     constructor(props){
         super(props);
@@ -11,6 +17,27 @@ class Quiz extends Component {
             quiz_position: 1
         }
     }
+
+    /**
+     * Updates quiz_questions in state
+     *
+     * @returns {void}
+     * @memberof Quiz
+     */
+    showNextQuestion = () => {
+        this.setState((state) => {
+            return {
+                quiz_position: state.quiz_position + 1
+            }
+        })
+    }
+
+    /**
+     * Renders Quiz Component
+     *
+     * @returns {JSX}
+     * @memberof Quiz
+     */
     render() {
         const isQuizEnd = this.state.quiz_position -1 === quizData.quiz_questions.length
         return (
@@ -19,6 +46,7 @@ class Quiz extends Component {
                     <QuizQuestion 
                         quiz_question={quizData.quiz_questions
                         [this.state.quiz_position - 1]}
+                        showNextQuestionHandler={this.showNextQuestion}
                     />
                 : <QuizEnd/>
                 }
