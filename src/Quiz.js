@@ -32,6 +32,10 @@ class Quiz extends Component {
         })
     }
 
+    handleResetClick() {
+        this.setState({ quiz_position: 1})
+    }
+
     /**
      * Renders Quiz Component
      *
@@ -48,7 +52,7 @@ class Quiz extends Component {
                         [this.state.quiz_position - 1]}
                         showNextQuestionHandler={this.showNextQuestion.bind(this)}
                     />
-                : <QuizEnd/>
+                : <QuizEnd resetClickHandler={this.handleResetClick.bind(this)}/>
                 }
             </div>
         )
